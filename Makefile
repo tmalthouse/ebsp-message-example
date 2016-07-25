@@ -19,18 +19,18 @@ E_LIB_NAMES = -le-bsp -le-lib
 
 ########################################################
 
-all: bin bin/host_program bin/ecore_program.elf
+all: bin bin/messages_host bin/messages_kernel.elf
 
 ########################################################
 
 bin:
 	@mkdir -p bin
 
-bin/host_program: src/host_code.c
+bin/messages_host: src/messages_host.c
 	@echo "CC $<"
 	@gcc $(CFLAGS) $(INCLUDES) -o $@ $< $(HOST_LIBS) $(HOST_LIB_NAMES)
 	
-bin/ecore_program.elf: src/ecore_code.c
+bin/messages_kernel.elf: src/messages_kernel.c
 	@echo "CC $<"
 	@e-gcc $(CFLAGS) -T ${ELDF} $(INCLUDES) -o $@ $< $(E_LIBS) $(E_LIB_NAMES)
 
