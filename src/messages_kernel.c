@@ -20,7 +20,7 @@ int main(int argc, char **argv)
 	for (int i=0; i<10; i++) {
 		int destination = random_core(p);
 		char message[64];
-		sprintf(message, "Hello to core %d from core %d\n", destination, s);
+		sprintf(message, "Hello to core %d from core %d", destination, s);
 		bsp_send(destination, &(tag), message, 64);
 		tag += p;
 	}
